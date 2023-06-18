@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import reactLogo from "@/assets/react.svg";
 import viteLogo from "@/assets/vite.svg";
 import { MainLayout } from "@/layouts/MainLayout";
+import { RichTextEditor } from "@/components";
 
 export const Home = () => {
   return (
@@ -26,6 +27,8 @@ export const Home = () => {
         <Typography variant="h1" sx={{ py: 2, textAlign: "center" }}>
           OpenApi Visual Designer
         </Typography>
+
+        <RichTextEditor />
       </Box>
     </MainLayout>
   );

@@ -59,3 +59,9 @@ To enable global imports is necessary install `vite-tsconfig-paths`
 ```bash
 $ yarn add i18next vite-tsconfig-paths
 ```
+
+To add a Rich text editor install [lexical](https://lexical.dev/). Our editor component is based on this [example](https://codesandbox.io/s/lexical-rich-text-example-5tncvy?file=/src/Editor.js)
+
+```bash
+$ yarn add lexical @lexical/react
+```
