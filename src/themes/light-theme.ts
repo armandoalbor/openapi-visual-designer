@@ -21,7 +21,7 @@ const palette: PaletteOptions = {
 export const lightTheme = createTheme({
   palette: palette,
   typography: {
-    fontFamily: "Raleway, sans-serif",
+    fontFamily: "Outfit, sans-serif",
   },
   // shadows: { ...getShadows(palette as BasicPalette) },
   components: { ...getOverrides(palette as BasicPalette) },

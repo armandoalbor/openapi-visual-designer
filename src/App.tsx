@@ -1,10 +1,13 @@
 import { Home } from "@/views/Home";
+import { ThemeProvider } from "@/context";
 import "./App.css";
 
 const App = () => {
   return (
     <>
-      <Home />
+      <ThemeProvider>
+        <Home />
+      </ThemeProvider>
     </>
   );
 };

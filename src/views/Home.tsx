@@ -10,6 +10,7 @@ export const Home = () => {
       justifyContent="center"
       alignItems="center"
       width="100%"
+      height="100vh"
     >
       <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -20,7 +21,7 @@ export const Home = () => {
         </a>
       </div>
 
-      <Typography variant="h1" sx={{ py: 2 }}>
+      <Typography variant="h1" sx={{ py: 2, textAlign: "center" }}>
         OpenApi Visual Designer
       </Typography>
     </Box>

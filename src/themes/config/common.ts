@@ -27,7 +27,7 @@ export const common = {
     }),
   },
   typography: {
-    fontFamily: "Raleway, sans-serif",
+    fontFamily: "Outfit, sans-serif",
   },
   shape: {
     borderRadius: THEME_SPACING,
