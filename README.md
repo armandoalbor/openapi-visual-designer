@@ -45,7 +45,7 @@ $ yarn build
 We use [MaterialUI v5](https://mui.com/material-ui/getting-started/overview/) as suite of design
 
 ```bash
-$ yarn add @mui/material @emotion/react @emotion/styled
+$ yarn add @mui/material @emotion/react @emotion/styled @mui/icons-material
 ```
 
 Use i18n to manage app translations for multi language or localization

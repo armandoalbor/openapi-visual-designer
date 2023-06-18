@@ -30,22 +30,22 @@ export const getOverrides = (
       },
     },
     MuiDrawer: {
-      styleOverrides: {
-        root: {},
-        paper: {
-          "& > svg": {
-            fill: "#ffffff",
-          },
-          backdropFilter: "blur(6px)",
-          boxShadow: "none",
-          color: palette.primary.contrastText,
-          background: `linear-gradient(0.12deg, ${hexToRgba(
-            "#00663E",
-            isDark ? 0.7 : 1
-          )}  33.22%,
-          ${hexToRgba("#0BB156", isDark ? 0.7 : 1)} 101.06%)`,
-        },
-      },
+      // styleOverrides: {
+      //   root: {},
+      //   paper: {
+      //     "& > svg": {
+      //       fill: "#ffffff",
+      //     },
+      //     backdropFilter: "blur(6px)",
+      //     boxShadow: "none",
+      //     color: palette.primary.contrastText,
+      //     background: `linear-gradient(0.12deg, ${hexToRgba(
+      //       "#00663E",
+      //       isDark ? 0.7 : 1
+      //     )}  33.22%,
+      //     ${hexToRgba("#0BB156", isDark ? 0.7 : 1)} 101.06%)`,
+      //   },
+      // },
     },
     MuiAppBar: {
       defaultProps: {
@@ -53,13 +53,14 @@ export const getOverrides = (
       },
       styleOverrides: {
         root: {
-          background: `linear-gradient(270deg, ${
-            palette.primary.dark
-          } 0%, ${hexToRgba(
-            palette.primary.light,
-            isDark ? 0.7 : 1
-          )} 40%, ${hexToRgba(palette.primary.main, isDark ? 0.6 : 1)} 100%)`,
-          borderBottom: `3px solid ${palette.primary[600]}`,
+          height: 80,
+          // background: `linear-gradient(270deg, ${
+          //   palette.primary.dark
+          // } 0%, ${hexToRgba(
+          //   palette.primary.light,
+          //   isDark ? 0.7 : 1
+          // )} 40%, ${hexToRgba(palette.primary.main, isDark ? 0.6 : 1)} 100%)`,
+          // borderBottom: `3px solid ${palette.primary[600]}`,
           backdropFilter: "blur(6px)",
           // marginTop: 80,
           // position: 'absolute',

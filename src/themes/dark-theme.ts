@@ -15,6 +15,7 @@ const palette: PaletteOptions = {
   common: {
     black: "#1D1D1D",
     white: "#fff",
+    layoutBg: "#23272f",
   },
 };
 

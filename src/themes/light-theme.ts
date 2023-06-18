@@ -4,6 +4,7 @@ import { colors } from "./config/colors";
 // import { getShadows } from "./config/shadows";
 import { BasicPalette } from "./config/types";
 import { lightPalette } from "./config/palettes/light";
+import { grey } from "@mui/material/colors";
 
 const COLOR_SCHEME = "blue";
 
@@ -15,6 +16,7 @@ const palette: PaletteOptions = {
   common: {
     black: "#1D1D1D",
     white: "#fff",
+    layoutBg: grey[100],
   },
 };
 

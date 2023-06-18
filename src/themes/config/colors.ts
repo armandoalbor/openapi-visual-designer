@@ -73,10 +73,10 @@ export const colors = {
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#9c27b0",
-      light: "#ba68c8",
-      dark: "#7b1fa2",
-      contrastText: "#ffffff",
+      main: "#96c63d",
+      light: "#b7d77a",
+      dark: "#5d8e22",
+      contrastText: "#000",
     },
   },
   purple: {
