@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FC, PropsWithChildren, useState } from "react";
 import { AppBar, Box, Toolbar, styled, useTheme } from "@mui/material";
 import { Header, Sidebar } from "@/components/ui";

@@ -1,13 +1,19 @@
 import { Home } from "@/views/Home";
 import { Styleguide } from "./views/Styleguide";
-import { ThemeProvider } from "@/context";
+import { Designer } from "./views/Designer";
+import { DesignerProvider, ThemeProvider } from "@/context";
 import "./App.css";
 
 const App = () => {
   return (
     <>
       <ThemeProvider>
-        <Home />
+        <DesignerProvider>
+          {/* TODO: Add react router */}
+          {/* <Home/>
+          <Styleguide/> */}
+          <Designer />
+        </DesignerProvider>
       </ThemeProvider>
     </>
   );
