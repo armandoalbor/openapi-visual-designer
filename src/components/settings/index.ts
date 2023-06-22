@@ -1,1 +1,1 @@
-export * from "./SettingsDrawer";
+export * from "./SettingsBar";

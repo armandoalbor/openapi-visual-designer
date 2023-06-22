@@ -11,8 +11,10 @@ import {
   ListItemIcon,
   MenuItem,
 } from "@mui/material";
+import { useUI } from "@/context";
 
 export const ProfileButton = () => {
+  const { actions } = useUI();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -79,7 +81,12 @@ export const ProfileButton = () => {
 
         <Divider />
 
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            actions?.toggleSettingsBar();
+            handleClose();
+          }}
+        >
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>

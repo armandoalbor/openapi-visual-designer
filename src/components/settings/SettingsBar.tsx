@@ -18,7 +18,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const SettingsDrawer: FC<Props> = ({ open, onClose }) => {
+export const SettingsBar: FC<Props> = ({ open, onClose }) => {
   const theme = useThemeMui();
 
   return (
@@ -41,7 +41,7 @@ export const SettingsDrawer: FC<Props> = ({ open, onClose }) => {
               Configuración
             </Typography>
 
-            <IconButton>
+            <IconButton onClick={onClose}>
               <Close />
             </IconButton>
           </Box>

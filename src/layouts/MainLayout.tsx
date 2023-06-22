@@ -3,7 +3,8 @@ import { FC, PropsWithChildren, useState } from "react";
 import { AppBar, Box, Toolbar, styled, useTheme } from "@mui/material";
 import { Header, Sidebar } from "@/components/ui";
 import { Sizes } from "@/models";
-import { SettingsDrawer } from "@/components/settings";
+import { SettingsBar } from "@/components/settings";
+import { useUI } from "@/context";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -42,11 +43,7 @@ interface Props extends PropsWithChildren {}
 
 export const MainLayout: FC<Props> = ({ children }) => {
   const theme = useTheme();
-  const [openSidebar, setOpenSidebar] = useState(false);
-
-  const toggleSidebar = () => {
-    setOpenSidebar(!openSidebar);
-  };
+  const { sideBarIsOpen, settingsBarIsOpen, actions } = useUI();
 
   return (
     <Box>
@@ -57,17 +54,25 @@ export const MainLayout: FC<Props> = ({ children }) => {
         elevation={0}
         sx={{
           bgcolor: theme.palette.background.default,
-          transition: openSidebar ? theme.transitions.create("width") : "none",
+          transition: sideBarIsOpen
+            ? theme.transitions.create("width")
+            : "none",
         }}
       >
         <Toolbar>
-          <Header toggleSidebar={toggleSidebar} sidebarIsOpen={openSidebar} />
+          <Header
+            toggleSidebar={actions?.toggleSideBar}
+            sidebarIsOpen={sideBarIsOpen}
+          />
         </Toolbar>
       </AppBar>
 
-      <Sidebar drawerOpen={openSidebar} drawerToggle={toggleSidebar} />
+      <Sidebar
+        drawerOpen={sideBarIsOpen}
+        drawerToggle={actions?.toggleSideBar}
+      />
 
-      <Main theme={theme} open={openSidebar}>
+      <Main theme={theme} open={sideBarIsOpen}>
         <Box m={2} sx={{ mt: `${Sizes.APPBAR_HEIGHT}px` }}>
           <Box
             height="100vh"
@@ -86,8 +91,10 @@ export const MainLayout: FC<Props> = ({ children }) => {
                 borderTopRightRadius: 16,
               }}
             >
-              {/* TODO: Add context for manage app config */}
-              <SettingsDrawer open={false} onClose={() => {}} />
+              <SettingsBar
+                open={settingsBarIsOpen}
+                onClose={actions?.toggleSettingsBar}
+              />
 
               {children}
             </Box>

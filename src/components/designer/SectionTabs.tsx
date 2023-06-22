@@ -1,10 +1,10 @@
-import { useDesigner } from "@/context";
+import { useUI } from "@/context";
 import { DesignerTabs } from "@/models/designer";
 import { TabItem, Tabs } from "@/components/ui";
 import { Box, Typography } from "@mui/material";
 
 export const SectionTabs = () => {
-  const { selectedTab, actions } = useDesigner();
+  const { selectedDesignerTab, actions } = useUI();
 
   const DESIGNER_TABS: TabItem[] = [
     {
@@ -25,13 +25,13 @@ export const SectionTabs = () => {
     <>
       <Tabs
         items={DESIGNER_TABS}
-        value={selectedTab}
-        onChange={actions?.onSelectTab}
+        value={selectedDesignerTab}
+        onChange={actions?.selectDesignerTab}
       />
 
       <Box display="flex" p={2}>
         <Typography variant="h2" textTransform="capitalize">
-          {selectedTab}
+          {selectedDesignerTab}
         </Typography>
       </Box>
     </>

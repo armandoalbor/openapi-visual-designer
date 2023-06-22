@@ -8,14 +8,13 @@ import {
 import { Sizes } from "@/models";
 import { Logo } from "./Logo";
 import { ProfileButton } from "../ProfileButton";
+import { useUI } from "@/context";
 
-interface Props {
-  sidebarIsOpen: boolean;
-  toggleSidebar: () => void;
-}
+interface Props {}
 
-export const Header: FC<Props> = ({ sidebarIsOpen, toggleSidebar }) => {
+export const Header: FC<Props> = () => {
   const theme = useTheme();
+  const { sideBarIsOpen, actions } = useUI();
 
   return (
     <Box
@@ -53,10 +52,10 @@ export const Header: FC<Props> = ({ sidebarIsOpen, toggleSidebar }) => {
                 background: theme.palette.secondary.dark,
               },
             }}
-            onClick={toggleSidebar}
+            onClick={actions?.toggleSideBar}
             color="inherit"
           >
-            {sidebarIsOpen ? (
+            {sideBarIsOpen ? (
               <ChevronLeftOutlined color="inherit" />
             ) : (
               <Menu color="inherit" />

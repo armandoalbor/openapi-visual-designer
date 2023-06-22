@@ -3,14 +3,16 @@ import {
   Box,
   Chip,
   Drawer,
+  IconButton,
   Stack,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { Code, ColorLens, DoneAll } from "@mui/icons-material";
+import { Code, ColorLens, DoneAll, Settings } from "@mui/icons-material";
 import { Sizes } from "@/models";
 import { Logo } from "@/components/ui/Header/Logo";
 import { MenuItem } from "./MenuItem";
+import { useUI } from "@/context";
 
 interface Props {
   drawerOpen: boolean;
@@ -20,6 +22,7 @@ interface Props {
 export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
   const theme = useTheme();
   const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
+  const { actions } = useUI();
 
   const drawer = (
     <>
@@ -48,7 +51,11 @@ export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
           <MenuItem text="Validator" icon={<DoneAll fontSize="large" />} />
         </Box>
 
-        <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
+        <Stack direction="column" justifyContent="center" sx={{ mb: 2 }}>
+          <IconButton sx={{ p: 2, mb: 2 }} onClick={actions?.toggleSettingsBar}>
+            <Settings fontSize="large" color="secondary" />
+          </IconButton>
+
           <Chip
             label={"v18.9.2"}
             disabled
