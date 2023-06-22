@@ -26,6 +26,11 @@ export type ColorPartial = Partial<Color>;
 
 export type PaletteColorOptions = SimplePaletteColorOptions & ColorPartial;
 
+export interface Background {
+  default: string;
+  paper: string;
+}
+
 export interface BasicPalette {
   mode: "light" | "dark";
   primary: PaletteColorOptions;
@@ -35,4 +40,5 @@ export interface BasicPalette {
   success: PaletteColorOptions;
   error: PaletteColorOptions;
   grey: ColorPartial;
+  background: Background;
 }

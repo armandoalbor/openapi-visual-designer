@@ -1,14 +1,20 @@
 import { FC } from "react";
 import { Avatar, Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import {
+  ChevronLeftOutlined,
+  KeyboardBackspace,
+  Menu,
+} from "@mui/icons-material";
 import { Sizes } from "@/models";
 import { Logo } from "./Logo";
+import { ProfileButton } from "../ProfileButton";
 
 interface Props {
+  sidebarIsOpen: boolean;
   toggleSidebar: () => void;
 }
 
-export const Header: FC<Props> = ({ toggleSidebar }) => {
+export const Header: FC<Props> = ({ sidebarIsOpen, toggleSidebar }) => {
   const theme = useTheme();
 
   return (
@@ -50,12 +56,16 @@ export const Header: FC<Props> = ({ toggleSidebar }) => {
             onClick={toggleSidebar}
             color="inherit"
           >
-            <Menu color="inherit" />
+            {sidebarIsOpen ? (
+              <ChevronLeftOutlined color="inherit" />
+            ) : (
+              <Menu color="inherit" />
+            )}
           </Avatar>
         </ButtonBase>
       </Box>
 
-      <Typography>Profile</Typography>
+      <ProfileButton />
     </Box>
   );
 };

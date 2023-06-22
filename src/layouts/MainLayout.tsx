@@ -3,6 +3,7 @@ import { FC, PropsWithChildren, useState } from "react";
 import { AppBar, Box, Toolbar, styled, useTheme } from "@mui/material";
 import { Header, Sidebar } from "@/components/ui";
 import { Sizes } from "@/models";
+import { SettingsDrawer } from "@/components/settings";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -60,7 +61,7 @@ export const MainLayout: FC<Props> = ({ children }) => {
         }}
       >
         <Toolbar>
-          <Header toggleSidebar={toggleSidebar} />
+          <Header toggleSidebar={toggleSidebar} sidebarIsOpen={openSidebar} />
         </Toolbar>
       </AppBar>
 
@@ -85,6 +86,9 @@ export const MainLayout: FC<Props> = ({ children }) => {
                 borderTopRightRadius: 16,
               }}
             >
+              {/* TODO: Add context for manage app config */}
+              <SettingsDrawer open={false} onClose={() => {}} />
+
               {children}
             </Box>
           </Box>

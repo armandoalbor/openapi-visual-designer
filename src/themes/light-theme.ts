@@ -17,6 +17,7 @@ const palette: PaletteOptions = {
     black: "#1D1D1D",
     white: "#fff",
     layoutBg: grey[100],
+    settingOn: "white",
   },
 };
 

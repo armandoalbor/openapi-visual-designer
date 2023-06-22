@@ -1,6 +1,8 @@
 import { Components, Theme } from "@mui/material";
 import { hexToRgba } from "../helpers";
 import { BasicPalette } from "./types";
+import { grey } from "@mui/material/colors";
+import { Sizes } from "@/models";
 
 export const getOverrides = (
   palette: BasicPalette
@@ -29,23 +31,35 @@ export const getOverrides = (
         },
       },
     },
+
     MuiDrawer: {
-      // styleOverrides: {
-      //   root: {},
-      //   paper: {
-      //     "& > svg": {
-      //       fill: "#ffffff",
-      //     },
-      //     backdropFilter: "blur(6px)",
-      //     boxShadow: "none",
-      //     color: palette.primary.contrastText,
-      //     background: `linear-gradient(0.12deg, ${hexToRgba(
-      //       "#00663E",
-      //       isDark ? 0.7 : 1
-      //     )}  33.22%,
-      //     ${hexToRgba("#0BB156", isDark ? 0.7 : 1)} 101.06%)`,
-      //   },
-      // },
+      styleOverrides: {
+        root: {
+          "& .transparent-drawer": {
+            backdropFilter: `blur(${palette.mode === "dark" ? 20 : 12}px)`,
+            // background: "transparent",
+            // backgroundColor: "rgba(19, 20, 22, 0.14)",
+
+            backgroundColor: hexToRgba(
+              grey[palette.mode === "dark" ? 900 : 200],
+              palette.mode === "dark" ? 0.5 : 0.25
+            ),
+
+            boxShadow: `${
+              palette.mode === "dark"
+                ? "rgba(19, 20, 22, 0.5)"
+                : "rgba(145, 158, 171, 0.34)"
+            } -40px 40px 80px -8px`,
+            backgroundImage:
+              "url(https://minimals.cc/assets/cyan-blur.png), url(https://minimals.cc/assets/red-blur.png)",
+            backgroundPositionX: "100%, 0%",
+            backgroundPositionY: "0%, 100%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "50%, 50%",
+          },
+        },
+        paper: {},
+      },
     },
     MuiAppBar: {
       defaultProps: {
@@ -53,7 +67,7 @@ export const getOverrides = (
       },
       styleOverrides: {
         root: {
-          height: 80,
+          height: Sizes.APPBAR_HEIGHT,
           // background: `linear-gradient(270deg, ${
           //   palette.primary.dark
           // } 0%, ${hexToRgba(

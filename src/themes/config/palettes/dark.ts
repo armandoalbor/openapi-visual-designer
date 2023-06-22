@@ -33,8 +33,12 @@ export const darkPalette = {
     main: "#5090D3",
   },
   background: {
-    default: "#121212",
-    paper: "rgba(255,255,255,0.01)",
+    default: "#111936",
+    paper: "#212946",
+
+    // BLUE
+    // default: "#111936",
+    // paper: "#212946",
   },
   text: {
     primary: "#fff",
