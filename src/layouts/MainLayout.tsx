@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useState, FunctionComponent } from "react";
 import { AppBar, Box, Toolbar, styled, useTheme } from "@mui/material";
 import { Header, Sidebar } from "@/components/ui";
 import { Sizes } from "@/models";

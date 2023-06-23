@@ -9,4 +9,11 @@ export const es = {
     light: "Claro",
     dark: "Oscuro",
   },
+  routes: {
+    appName: "OpenAPI Designer",
+    styleguide: "Styleguide",
+    404: "Página no encontrada",
+    code: "Visor de Código",
+    validator: "Validador de Código",
+  },
 };

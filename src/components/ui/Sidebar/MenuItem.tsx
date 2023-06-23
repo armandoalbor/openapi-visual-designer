@@ -4,10 +4,11 @@ import { ButtonBase, Box, Typography } from "@mui/material";
 interface Props {
   text: string;
   icon: JSX.Element;
+  isActive: boolean;
   onClick?: () => void;
 }
 
-export const MenuItem: FC<Props> = ({ text, icon, onClick }) => {
+export const MenuItem: FC<Props> = ({ text, icon, isActive, onClick }) => {
   return (
     <ButtonBase onClick={onClick}>
       <Box
@@ -18,7 +19,9 @@ export const MenuItem: FC<Props> = ({ text, icon, onClick }) => {
         p={4}
       >
         {icon}
-        <Typography>{text}</Typography>
+        <Typography color={isActive ? "secondary" : undefined}>
+          {text}
+        </Typography>
       </Box>
     </ButtonBase>
   );

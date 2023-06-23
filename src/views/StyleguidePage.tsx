@@ -1,6 +1,6 @@
 import { RichTextEditor } from "@/components";
 
-export const Styleguide = () => {
+export const StyleguidePage = () => {
   return (
     <div>
       <RichTextEditor />

@@ -1,10 +1,6 @@
 import { FC } from "react";
-import { Avatar, Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import {
-  ChevronLeftOutlined,
-  KeyboardBackspace,
-  Menu,
-} from "@mui/icons-material";
+import { Avatar, Box, ButtonBase, useTheme } from "@mui/material";
+import { ChevronLeftOutlined, Menu } from "@mui/icons-material";
 import { Sizes } from "@/models";
 import { Logo } from "./Logo";
 import { ProfileButton } from "../ProfileButton";

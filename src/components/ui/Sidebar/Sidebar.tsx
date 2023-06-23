@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import {
   Box,
   Chip,
@@ -8,7 +9,13 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { Code, ColorLens, DoneAll, Settings } from "@mui/icons-material";
+import {
+  Code,
+  ColorLens,
+  DoneAll,
+  Palette,
+  Settings,
+} from "@mui/icons-material";
 import { Sizes } from "@/models";
 import { Logo } from "@/components/ui/Header/Logo";
 import { MenuItem } from "./MenuItem";
@@ -21,53 +28,108 @@ interface Props {
 
 export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
   const theme = useTheme();
+  const history = useHistory();
+  const location = useLocation();
   const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
   const { actions } = useUI();
 
-  const drawer = (
-    <>
-      <Box sx={{ display: { xs: "block", md: "none" } }}>
-        <Box
-          sx={{ display: "flex", p: 2, mx: "auto", justifyContent: "center" }}
-        >
-          <Logo />
-        </Box>
-      </Box>
-
-      <Box
-        sx={{
-          px: 2,
-          ml: 2,
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          height: `calc(100% - ${Sizes.APPBAR_HEIGHT}px)`,
-        }}
-      >
-        <Box textAlign="center">
-          <MenuItem text="Designer" icon={<ColorLens fontSize="large" />} />
-          <MenuItem text="Code" icon={<Code fontSize="large" />} />
-          <MenuItem text="Validator" icon={<DoneAll fontSize="large" />} />
-        </Box>
-
-        <Stack direction="column" justifyContent="center" sx={{ mb: 2 }}>
-          <IconButton sx={{ p: 2, mb: 2 }} onClick={actions?.toggleSettingsBar}>
-            <Settings fontSize="large" color="secondary" />
-          </IconButton>
-
-          <Chip
-            label={"v18.9.2"}
-            disabled
-            color="secondary"
-            size="medium"
-            sx={{ cursor: "pointer" }}
+  const renderDrawer = () => {
+    const menuItems = [
+      {
+        text: "Designer",
+        icon: (
+          <ColorLens
+            fontSize="large"
+            color={location.pathname === "/designer" ? "secondary" : undefined}
           />
-        </Stack>
-      </Box>
-      {/* </MobileView> */}
-    </>
-  );
+        ),
+        route: "/designer",
+      },
+      {
+        text: "Code",
+        icon: (
+          <Code
+            fontSize="large"
+            color={location.pathname === "/code" ? "secondary" : undefined}
+          />
+        ),
+        route: "/code",
+      },
+      {
+        text: "Validator",
+        icon: (
+          <DoneAll
+            fontSize="large"
+            color={location.pathname === "/validator" ? "secondary" : undefined}
+          />
+        ),
+        route: "/validator",
+      },
+    ];
+
+    return (
+      <>
+        <Box sx={{ display: { xs: "block", md: "none" } }}>
+          <Box
+            sx={{ display: "flex", p: 2, mx: "auto", justifyContent: "center" }}
+          >
+            <Logo />
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            px: 2,
+            ml: 2,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            height: `calc(100% - ${Sizes.APPBAR_HEIGHT}px)`,
+          }}
+        >
+          <Box textAlign="center">
+            {menuItems.map((menu) => (
+              <MenuItem
+                isActive={menu.route === location.pathname}
+                key={menu.text}
+                text={menu.text}
+                onClick={() => {
+                  history.push(menu.route);
+                }}
+                icon={menu.icon}
+              />
+            ))}
+          </Box>
+
+          <Stack direction="column" justifyContent="center" sx={{ mb: 2 }}>
+            <IconButton
+              sx={{ p: 2 }}
+              onClick={() => history.push("/dev/styleguide")}
+            >
+              <Palette fontSize="large" color="primary" />
+            </IconButton>
+
+            <IconButton
+              sx={{ p: 2, mb: 2 }}
+              onClick={actions?.toggleSettingsBar}
+            >
+              <Settings fontSize="large" color="primary" />
+            </IconButton>
+
+            <Chip
+              label={"v18.9.2"}
+              disabled
+              color="primary"
+              size="medium"
+              sx={{ cursor: "pointer" }}
+            />
+          </Stack>
+        </Box>
+        {/* </MobileView> */}
+      </>
+    );
+  };
 
   return (
     <Box
@@ -97,7 +159,7 @@ export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
         ModalProps={{ keepMounted: true }}
         color="inherit"
       >
-        {drawer}
+        {renderDrawer()}
       </Drawer>
     </Box>
   );

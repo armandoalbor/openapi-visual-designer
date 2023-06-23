@@ -1,7 +1,5 @@
-import { Home } from "@/views/Home";
-import { Styleguide } from "./views/Styleguide";
-import { Designer } from "./views/Designer";
 import { DesignerProvider, ThemeProvider, UIProvider } from "@/context";
+import { Navigation } from "./routes/Navigation";
 import "./App.css";
 
 const App = () => {
@@ -13,7 +11,7 @@ const App = () => {
             {/* TODO: Add react router */}
             {/* <Home/>
             <Styleguide/> */}
-            <Designer />
+            <Navigation />
           </DesignerProvider>
         </UIProvider>
       </ThemeProvider>

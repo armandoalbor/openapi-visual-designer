@@ -9,4 +9,11 @@ export const en = {
     light: "Light",
     dark: "Dark",
   },
+  routes: {
+    appName: "OpenAPI Designer",
+    styleguide: "Styleguide",
+    404: "Page Not Found",
+    code: "Code Viewer",
+    validator: "Code Validator",
+  },
 };
