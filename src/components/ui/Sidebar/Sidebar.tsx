@@ -37,32 +37,17 @@ export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
     const menuItems = [
       {
         text: "Designer",
-        icon: (
-          <ColorLens
-            fontSize="large"
-            color={location.pathname === "/designer" ? "secondary" : undefined}
-          />
-        ),
-        route: "/designer",
+        icon: <ColorLens fontSize="large" />,
+        route: "/designer/general",
       },
       {
         text: "Code",
-        icon: (
-          <Code
-            fontSize="large"
-            color={location.pathname === "/code" ? "secondary" : undefined}
-          />
-        ),
+        icon: <Code fontSize="large" />,
         route: "/code",
       },
       {
         text: "Validator",
-        icon: (
-          <DoneAll
-            fontSize="large"
-            color={location.pathname === "/validator" ? "secondary" : undefined}
-          />
-        ),
+        icon: <DoneAll fontSize="large" />,
         route: "/validator",
       },
     ];

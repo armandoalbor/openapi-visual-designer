@@ -21,9 +21,17 @@ const useActions = (state: State, dispatch: any): Actions => {
     localStorage.setItem("settingsBarIsOpen", isOpen.toString());
   };
 
+  const toggleDesignerTabs = (): void => {
+    const isOpen = !state.designerTabsIsOpen;
+
+    dispatch(reducerActions.toggleDesignerTabs(isOpen));
+    localStorage.setItem("designerTabsIsOpen", isOpen.toString());
+  };
+
   return {
     selectDesignerTab,
     toggleSettingsBar,
+    toggleDesignerTabs,
     toggleSideBar,
   };
 };

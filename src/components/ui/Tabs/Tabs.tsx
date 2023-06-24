@@ -1,5 +1,5 @@
 import { SyntheticEvent, FC } from "react";
-import { Box, Tab, Tabs as MuiTabs } from "@mui/material";
+import { Tab, Tabs as MuiTabs } from "@mui/material";
 
 export interface TabItem {
   value: string;
@@ -21,23 +21,22 @@ export const Tabs: FC<Props> = ({ items, value, onChange }) => {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <MuiTabs
-        value={value || firstTab.value}
-        onChange={handleChange}
-        variant="fullWidth"
-        textColor="secondary"
-        indicatorColor="secondary"
-        aria-label="tabs-component"
-      >
-        {items.map((item, index) => (
-          <Tab
-            key={`tab-${index}-${item.value}`}
-            value={item.value}
-            label={item.label}
-          />
-        ))}
-      </MuiTabs>
-    </Box>
+    <MuiTabs
+      sx={{ width: 1 }}
+      value={value || firstTab.value}
+      onChange={handleChange}
+      variant="fullWidth"
+      textColor="secondary"
+      indicatorColor="secondary"
+      aria-label="tabs-component"
+    >
+      {items.map((item, index) => (
+        <Tab
+          key={`tab-${index}-${item.value}`}
+          value={item.value}
+          label={item.label}
+        />
+      ))}
+    </MuiTabs>
   );
 };

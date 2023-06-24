@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { DesignerLayout } from "@/layouts";
-import { SectionTabs } from "@/components/designer";
+import { MainSection, TabsSection } from "@/components/designer";
 
 export const DesignerPage = () => {
   return (
-    <DesignerLayout leftComponent={<SectionTabs />}>
+    <DesignerLayout leftComponent={<TabsSection />}>
       <Box
         display="flex"
         height="100%"
@@ -12,7 +12,7 @@ export const DesignerPage = () => {
         alignItems="center"
       >
         <Typography variant="h1" textTransform="capitalize">
-          DesignerSection
+          <MainSection />
         </Typography>
       </Box>
     </DesignerLayout>

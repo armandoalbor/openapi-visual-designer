@@ -33,7 +33,7 @@ function Navigation() {
                   <Helmet>
                     <title>{t(route.titleMessage)}</title>
                     {metadata.map((meta) => (
-                      <meta {...meta} />
+                      <meta key={meta} {...meta} />
                     ))}
                   </Helmet>
 

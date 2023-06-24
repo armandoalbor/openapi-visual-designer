@@ -1,6 +1,8 @@
-import { Sizes } from "@/models";
-import { Box, Grid } from "@mui/material";
 import { FC, PropsWithChildren } from "react";
+import { Box } from "@mui/material";
+import { AnimatedBox } from "@/components";
+import { useUI } from "@/context";
+import { Sizes } from "@/models";
 
 interface Props extends PropsWithChildren {
   leftComponent?: JSX.Element;
@@ -12,20 +14,25 @@ export const DesignerLayout: FC<Props> = ({
   leftComponent,
   //   rightComponent,
 }) => {
+  const { designerTabsIsOpen } = useUI();
+
   return (
     <Box
       display="flex"
       width={1}
       sx={{ height: `calc(100vh - ${Sizes.APPBAR_HEIGHT - 48}px)` }}
     >
-      <Grid container spacing={0}>
-        <Grid item md={4} lg={4}>
+      <Box display="flex" flexDirection="row" width={1}>
+        <AnimatedBox
+          open={designerTabsIsOpen}
+          sx={{ width: (1 / 12) * (designerTabsIsOpen ? 3.5 : 0) }}
+        >
           {leftComponent}
-        </Grid>
-        <Grid item md={8} lg={8}>
+        </AnimatedBox>
+        <Box sx={{ width: (1 / 12) * (designerTabsIsOpen ? 8.5 : 12) }}>
           {children}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 };

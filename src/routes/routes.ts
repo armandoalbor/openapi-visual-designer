@@ -22,7 +22,7 @@ export const routes: Route[] = [
     path: "/designer",
     layout: MainLayout,
     component: DesignerPage,
-    exact: true,
+    exact: false,
     titleMessage: "routes.appName",
     private: false,
   },

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, cloneElement } from "react";
 import { ButtonBase, Box, Typography } from "@mui/material";
 
 interface Props {
@@ -18,7 +18,8 @@ export const MenuItem: FC<Props> = ({ text, icon, isActive, onClick }) => {
         alignItems="center"
         p={4}
       >
-        {icon}
+        {cloneElement(icon, { color: isActive ? "secondary" : undefined })}
+
         <Typography color={isActive ? "secondary" : undefined}>
           {text}
         </Typography>
