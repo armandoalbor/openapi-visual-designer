@@ -16,8 +16,11 @@ const palette: PaletteOptions = {
   common: {
     black: "#1D1D1D",
     white: "#fff",
-    layoutBg: grey[100],
+    layoutBg: "#f5f5f5",
+    mainContainerBg: "#fcfcfc",
     settingOn: "white",
+    inputBg: "#ffffff",
+    inputBorderColor: grey[300],
   },
 };
 

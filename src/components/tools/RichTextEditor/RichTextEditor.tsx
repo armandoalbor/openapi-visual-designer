@@ -4,7 +4,6 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -22,10 +21,7 @@ import { exampleTheme } from "./themes";
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-
-function Placeholder() {
-  return <div className="editor-placeholder">Enter some rich text...</div>;
-}
+import { FC } from "react";
 
 const editorConfig = {
   namespace: "editor",
@@ -48,19 +44,34 @@ const editorConfig = {
   ],
 };
 
-export const RichTextEditor = () => {
+interface Props {
+  placeholder?: string;
+}
+
+export const RichTextEditor: FC<Props> = ({
+  placeholder = "Enter some rich text here ...",
+}) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <Box className="editor-container" boxShadow={2}>
+      <Box
+        className="editor-container"
+        sx={{
+          backgroundColor: "common.inputBg",
+          border: `1px solid`,
+          borderColor: "common.inputBorderColor",
+        }}
+      >
         <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={<Placeholder />}
+            placeholder={
+              <div className="editor-placeholder">{placeholder}</div>
+            }
             ErrorBoundary={LexicalErrorBoundary}
           />
           <HistoryPlugin />
-          <TreeViewPlugin />
+          {/* <TreeViewPlugin /> */}
           <AutoFocusPlugin />
           <CodeHighlightPlugin />
           <ListPlugin />

@@ -3,11 +3,13 @@ import { hexToRgba } from "../helpers";
 import { BasicPalette } from "./types";
 import { grey } from "@mui/material/colors";
 import { Sizes } from "@/models";
+import { getShadows } from "./shadows";
 
 export const getOverrides = (
   palette: BasicPalette
 ): Components<Omit<Theme, "components">> => {
   const isDark = palette.mode === "dark";
+  const shadows = getShadows(palette);
 
   return {
     MuiLink: {
@@ -27,11 +29,33 @@ export const getOverrides = (
       },
       styleOverrides: {
         root: {
+          borderRadius: 32,
           textTransform: "none",
         },
       },
     },
-
+    MuiTextField: {
+      defaultProps: {
+        variant: "outlined",
+        fullWidth: true,
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: isDark ? "rgb(26, 34, 63)" : "#ffffff",
+          // boxShadow: shadows[1],
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: isDark ? "rgba(189, 200, 240, 0.157)" : grey[300],
+          },
+          "&.Mui-disabled": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: palette.action.disabledBackground,
+            },
+          },
+        },
+      },
+    },
     MuiDrawer: {
       styleOverrides: {
         root: {

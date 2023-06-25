@@ -25,7 +25,7 @@ export const DesignerLayout: FC<Props> = ({
       <Box display="flex" flexDirection="row" width={1}>
         <AnimatedBox
           open={designerTabsIsOpen}
-          sx={{ width: (1 / 12) * (designerTabsIsOpen ? 3.5 : 0) }}
+          sx={{ width: designerTabsIsOpen ? (1 / 12) * 3.5 : 48 }}
         >
           {leftComponent}
         </AnimatedBox>

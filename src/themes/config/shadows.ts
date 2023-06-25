@@ -6,8 +6,8 @@ import { BasicPalette } from "./types";
 export const getShadows = (palette: BasicPalette): Shadows => {
   const isDark = palette.mode === "dark";
 
-  const shadowColor = grey[isDark ? 900 : 600];
-  const opacityLevel = isDark ? 3 : 2;
+  const shadowColor = grey[isDark ? 800 : 600];
+  const opacityLevel = isDark ? 4 : 8;
 
   const transparent1 = hexToRgba(shadowColor, 0.42 / opacityLevel);
   const transparent2 = hexToRgba(shadowColor, 0.44 / opacityLevel);

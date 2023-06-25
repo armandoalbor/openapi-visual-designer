@@ -1,4 +1,7 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { DetailsForm } from "./DetailsForm";
+import { Box } from "@mui/material";
+import { hexToRgba } from "@/themes";
 
 export const MainSection = () => {
   let { path } = useRouteMatch();
@@ -10,7 +13,7 @@ export const MainSection = () => {
           Main
         </Route>
         <Route exact path={`${path}/general/details`}>
-          API Details
+          <DetailsForm />
         </Route>
       </Switch>
     </>

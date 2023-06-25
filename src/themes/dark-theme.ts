@@ -16,7 +16,10 @@ const palette: PaletteOptions = {
     black: "#1D1D1D",
     white: "#fff",
     layoutBg: "#1a223f",
+    mainContainerBg: darkPalette.background.paper,
     settingOn: "white",
+    inputBg: "rgb(26, 34, 63)",
+    inputBorderColor: "rgba(189, 200, 240, 0.157)",
   },
 };
 
