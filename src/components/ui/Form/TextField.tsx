@@ -22,8 +22,6 @@ export const TextField: FC<Props> = ({
   onChange,
   ...otherProps
 }) => {
-  console.log("hasError", name, !!(errors && errors[name]));
-
   return (
     <Controller
       name={name}
