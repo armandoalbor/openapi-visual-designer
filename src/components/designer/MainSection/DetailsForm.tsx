@@ -28,8 +28,13 @@ export const DetailsForm = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = form;
+
+  const onChangeDescriptionEditor = (content: string) => {
+    setValue("description", content, { shouldValidate: true });
+  };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
@@ -68,7 +73,9 @@ export const DetailsForm = () => {
         </Grid>
         <Grid item xs={12}>
           <RichTextEditor
+            id="api-details-desciption"
             placeholder={t("form.inputs.apiDescription.placeholder")}
+            onChange={onChangeDescriptionEditor}
           />
         </Grid>
         <Grid item xs={12}>

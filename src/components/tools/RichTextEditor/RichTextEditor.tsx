@@ -4,7 +4,6 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
 import { ListItemNode, ListNode } from "@lexical/list";
@@ -14,6 +13,11 @@ import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPlugin";
 import { TRANSFORMERS } from "@lexical/markdown";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+
+import ToolbarPlugin from "./plugins/ToolbarPlugin";
+import { onChange } from "./plugins/OnChangePlugin";
+import { LocalStoragePlugin } from "./plugins/LocalStoragePlugin";
 
 import { Box } from "@mui/material";
 
@@ -23,34 +27,41 @@ import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import { FC } from "react";
 
-const editorConfig = {
-  namespace: "editor",
-  theme: exampleTheme,
-  onError(error: any) {
-    throw error;
-  },
-  nodes: [
-    HeadingNode,
-    ListNode,
-    ListItemNode,
-    QuoteNode,
-    CodeNode,
-    CodeHighlightNode,
-    TableNode,
-    TableCellNode,
-    TableRowNode,
-    AutoLinkNode,
-    LinkNode,
-  ],
-};
-
 interface Props {
+  id: string;
   placeholder?: string;
+  onChange?: (content: string) => void;
 }
 
 export const RichTextEditor: FC<Props> = ({
+  id,
   placeholder = "Enter some rich text here ...",
+  onChange,
 }) => {
+  const content = localStorage.getItem(id);
+
+  const editorConfig = {
+    namespace: id,
+    editorState: content,
+    theme: exampleTheme,
+    onError(error: any) {
+      throw error;
+    },
+    nodes: [
+      HeadingNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      CodeNode,
+      CodeHighlightNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
+      AutoLinkNode,
+      LinkNode,
+    ],
+  };
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <Box
@@ -77,8 +88,10 @@ export const RichTextEditor: FC<Props> = ({
           <ListPlugin />
           <LinkPlugin />
           <AutoLinkPlugin />
+          {/* <OnChangePlugin onChange={onChange} /> */}
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <LocalStoragePlugin namespace={id} onChange={onChange} />
         </div>
       </Box>
     </LexicalComposer>
