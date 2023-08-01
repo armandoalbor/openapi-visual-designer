@@ -28,6 +28,11 @@ export const SettingsBar: FC<Props> = ({ open, onClose }) => {
         open={open}
         onClose={onClose}
         classes={{ paper: "transparent-drawer" }}
+        slotProps={{
+          backdrop: {
+            invisible: true,
+          },
+        }}
       >
         <Box width={300}>
           <Box

@@ -27,6 +27,24 @@ export const es = {
     "/designer/paths": "Paths",
     "/designer/components": "Componentes",
   },
+  components: {
+    button: {
+      cancel: "Cancelar",
+      process: "Procesar",
+      confirm: "Confirmar",
+      confirmDelete: "Sí, eliminar",
+    },
+    table: {
+      actions: "Acciones",
+      edit: "Editar",
+      delete: "Eliminar",
+      search: "Búsqueda",
+    },
+    alertResultModal: {
+      acceptButtonLabel: "Aceptar",
+      goBackButtonLabel: "Volver",
+    },
+  },
   actions: {
     save: "Guardar",
     delete: "Eliminar",
@@ -74,6 +92,53 @@ export const es = {
         placeholder: "Ej. https://apiup.com/amazing-logo.png",
         helper: "Opcional. URL con imagen para usar como logo",
       },
+      tagLabel: {
+        label: "Etiqueta",
+        placeholder: "Ej. Warnings",
+        helper: "Requerido. Texto para mostrar en el Tag",
+      },
+      tagColor: {
+        label: "Color",
+        placeholder: "Ej. Info",
+        helper: "Requerido. Color del Tag",
+      },
+      description: {
+        label: "Descripción",
+        placeholder: "Escribe una breve descripción",
+        helper: "Opcional. Breve descripción",
+      },
+      name: {
+        label: "Nombre",
+        placeholder: "Escribe un nombre",
+        helper: "Nombre descriptivo",
+      },
+      url: {
+        label: "URL",
+        placeholder: "Escribe una url",
+        helper: "url (http://example.com)",
+      },
+    },
+  },
+  catalog: {
+    pronouns: {
+      singularHe: "el",
+      pluralHe: "los",
+      singularShe: "la",
+      pluralShe: "las",
+    },
+    fields: {
+      id: "ID",
+      name: "Nombre",
+      code: "Código",
+      description: "Descripción",
+    },
+    actions: {
+      create: "Crear {{entityName}}",
+      update: "Actualizar {{entityName}}",
+      delete: "Eliminar {{entityName}}",
+      search: "Buscar {{entityName}}",
+      deleteConfirmationMessage:
+        '¿Estas seguro que quieres eliminar el <b>{{ entityName }}</b> seleccionado <b>"{{ itemValue }}"</b>?',
     },
   },
   designer: {
@@ -95,10 +160,14 @@ export const es = {
           servers: {
             title: "Servidores",
             subtitle: "Rutas que pueden ser utilizadas para acceder al API",
+            entityName: "Servidor",
+            pluralEntityName: "Servidores",
           },
           tags: {
             title: "Tags",
             subtitle: "Utilizadas para especificaciones con metadata adicional",
+            entityName: "Tag",
+            pluralEntityName: "Tags",
           },
         },
       },

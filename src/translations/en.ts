@@ -27,6 +27,24 @@ export const en = {
     "/designer/paths": "Paths",
     "/designer/components": "Components",
   },
+  components: {
+    button: {
+      cancel: "Cancel",
+      process: "Process",
+      confirm: "Confirm",
+      confirmDelete: "Yes, delete",
+    },
+    table: {
+      actions: "Actions",
+      edit: "Edit",
+      delete: "Delete",
+      search: "Search",
+    },
+    alertResultModal: {
+      acceptButtonLabel: "Accept",
+      goBackButtonLabel: "Go back",
+    },
+  },
   actions: {
     save: "Save",
     delete: "Delete",
@@ -74,6 +92,53 @@ export const en = {
         placeholder: "e.g. https://apiup.com/amazing-logo.png",
         helper: "Optional. URL with image to use as logo",
       },
+      tagLabel: {
+        label: "Label",
+        placeholder: "Ex. Warnings",
+        helper: "Required. Text to display in the Tag",
+      },
+      tagColor: {
+        label: "Color",
+        placeholder: "Ex. Info",
+        helper: "Required. Tag Color",
+      },
+      description: {
+        label: "Description",
+        placeholder: "Enter a short description",
+        helper: "Optional. Brief description",
+      },
+      name: {
+        label: "Name",
+        placeholder: "Enter a name",
+        helper: "Friendly name",
+      },
+      url: {
+        label: "URL",
+        placeholder: "Enter a url",
+        helper: "url (http://example.com)",
+      },
+    },
+  },
+  catalog: {
+    pronouns: {
+      singularHe: "the",
+      pluralHe: "the",
+      singularShe: "the",
+      pluralShe: "the",
+    },
+    fields: {
+      id: "ID",
+      name: "Name",
+      code: "Code",
+      description: "Description",
+    },
+    actions: {
+      create: "Create {{entityName}}",
+      update: "Update {{entityName}}",
+      delete: "Delete {{entityName}}",
+      search: "Search {{entityName}}",
+      deleteConfirmationMessage:
+        'Are you sure you want to remove the <b>{{ entityName }}</b> selected <b>"{{ itemValue }}"</b>?',
     },
   },
   designer: {
@@ -95,10 +160,14 @@ export const en = {
           servers: {
             title: "Servers",
             subtitle: "Routes that can be used to access the API",
+            entityName: "Server",
+            pluralEntityName: "Servers",
           },
           tag: {
             title: "Tags",
             subtitle: "Used for specs with additional metadata",
+            entityName: "Tag",
+            pluralEntityName: "Tags",
           },
         },
       },

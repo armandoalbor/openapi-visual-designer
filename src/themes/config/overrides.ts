@@ -1,4 +1,6 @@
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import { Components, Theme } from "@mui/material";
+
 import { hexToRgba } from "../helpers";
 import { BasicPalette } from "./types";
 import { grey } from "@mui/material/colors";
@@ -102,6 +104,65 @@ export const getOverrides = (
           backdropFilter: "blur(6px)",
           // marginTop: 80,
           // position: 'absolute',
+        },
+      },
+    },
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          backgroundColor: isDark
+            ? hexToRgba(palette.primary.main, 0.05)
+            : "#ffffff",
+          padding: 8,
+          boxShadow: `1px 1px 5px 0px ${hexToRgba("#000000", 0.1)}`,
+          minHeight: 400,
+        },
+
+        // TODO: Test implement override styles for column groups
+        withBorderColor: {
+          // justifyContent: 'center',
+        },
+
+        row: {
+          "&:hover": {
+            backgroundColor: hexToRgba(
+              palette.primary.dark,
+              isDark ? 0.15 : 0.05
+            ),
+          },
+        },
+
+        columnHeaders: {
+          background: hexToRgba(palette.primary.main, isDark ? 0.25 : 0.9),
+
+          "& .MuiDataGrid-columnSeparator": {
+            display: "none",
+          },
+
+          "& .MuiDataGrid-columnHeader": {
+            ":focus-within, :focus": {
+              outline: 0,
+            },
+          },
+        },
+
+        columnHeaderTitle: {
+          textTransform: "uppercase",
+          color: palette.primary.contrastText,
+          fontWeight: 500,
+        },
+
+        cell: {
+          ":focus-within, :focus": {
+            outline: 0,
+          },
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          backgroundImage: "none",
         },
       },
     },

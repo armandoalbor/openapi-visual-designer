@@ -1,37 +1,85 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { FormatClearOutlined } from "@mui/icons-material";
+import { FC } from "react";
+import { Controller } from "react-hook-form";
+import {
+  FormHelperText,
+  MenuItem,
+  Select as SelectMUI,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
 
-export const BasicSelect = () => {
-  const [age, setAge] = React.useState("");
+interface Props {
+  id: string;
+  name: string;
+  control: any;
+  options: Record<string, any>[];
+  helperText?: string;
+  rules?: any;
+  errors?: any;
+  label?: string;
+  disabled?: boolean;
+  keyValue?: string;
+  keyLabel?: string;
+  optionRenderer?: (option: Record<string, any>) => JSX.Element;
+}
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
+export const Select: FC<Props> = ({
+  id,
+  name,
+  control,
+  rules,
+  errors,
+  options,
+  helperText,
+  label = "Native select",
+  disabled = false,
+  keyValue = "value",
+  keyLabel = "label",
+  optionRenderer,
+}) => {
+  if (!control) {
+    throw new Error(
+      'El parámetro "control" es necesario para el componente Select y no puede ser nulo.'
+    );
+  }
+
+  const hasError = errors[name];
 
   return (
-    <Box sx={{ minWidth: 140 }}>
-      {/* <FormControl fullWidth size="small" variant="filled">
-        <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
-      <Select
-        sx={{ width: 1 }}
-        id="demo-simple-select"
-        value={age}
-        onChange={handleChange}
-        size="small"
-      >
-        <MenuItem value={10}>
-          <FormatClearOutlined fontSize="small" />
-          Ten
-        </MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-      </Select>
-      {/* </FormControl> */}
-    </Box>
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field }) => (
+        <FormControl
+          sx={{ display: "flex" }}
+          disabled={disabled}
+          error={hasError}
+        >
+          <InputLabel id={`${id}-label`}>{label}</InputLabel>
+
+          <SelectMUI id={id} labelId={`${id}-label`} label={label} {...field}>
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {options.map((option) => (
+              <MenuItem key={option[keyValue]} value={option[keyValue]}>
+                {optionRenderer ? optionRenderer(option) : option[keyLabel]}
+              </MenuItem>
+            ))}
+          </SelectMUI>
+
+          {!hasError && !!helperText && (
+            <FormHelperText>{helperText}</FormHelperText>
+          )}
+
+          {hasError && (
+            <FormHelperText error={hasError}>
+              {errors && errors[name]?.message}
+            </FormHelperText>
+          )}
+        </FormControl>
+      )}
+    />
   );
 };

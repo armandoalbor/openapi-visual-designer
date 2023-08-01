@@ -1,4 +1,4 @@
-import { DesignerProvider, ThemeProvider, UIProvider } from "@/context";
+import { DesignerGeneralProvider, ThemeProvider, UIProvider } from "@/context";
 import { Navigation } from "./routes/Navigation";
 import "./App.css";
 
@@ -7,12 +7,12 @@ const App = () => {
     <>
       <ThemeProvider>
         <UIProvider>
-          <DesignerProvider>
+          <DesignerGeneralProvider>
             {/* TODO: Add react router */}
             {/* <Home/>
             <Styleguide/> */}
             <Navigation />
-          </DesignerProvider>
+          </DesignerGeneralProvider>
         </UIProvider>
       </ThemeProvider>
     </>

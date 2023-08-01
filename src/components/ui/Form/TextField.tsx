@@ -3,6 +3,7 @@ import { Controller, Control, FieldValues } from "react-hook-form";
 import { BaseTextFieldProps, TextField as TextFieldMUI } from "@mui/material";
 
 interface Props extends BaseTextFieldProps {
+  id: string;
   name: string;
   rules?: any;
   errors?: any;
@@ -13,6 +14,7 @@ interface Props extends BaseTextFieldProps {
 }
 
 export const TextField: FC<Props> = ({
+  id,
   name,
   label,
   placeholder,
@@ -29,6 +31,7 @@ export const TextField: FC<Props> = ({
       rules={rules}
       render={({ field }) => (
         <TextFieldMUI
+          id={id}
           label={label}
           placeholder={placeholder}
           // @ts-ignore

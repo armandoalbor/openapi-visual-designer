@@ -14,7 +14,6 @@ export const GeneralMenu = () => {
   const { items } = getMenuItems();
 
   return (
-    // <List sx={{ width: "100%", bgcolor: "background.paper" }}>
     <List sx={{ width: "100%" }}>
       {items.map((menu) => {
         return (

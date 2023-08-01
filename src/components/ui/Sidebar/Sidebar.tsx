@@ -76,7 +76,7 @@ export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
           <Box textAlign="center">
             {menuItems.map((menu) => (
               <MenuItem
-                isActive={menu.route === location.pathname}
+                isActive={location.pathname.includes(menu.route)}
                 key={menu.text}
                 text={menu.text}
                 onClick={() => {
@@ -92,20 +92,19 @@ export const Sidebar: FC<Props> = ({ drawerOpen, drawerToggle }) => {
               sx={{ p: 2 }}
               onClick={() => history.push("/dev/styleguide")}
             >
-              <Palette fontSize="large" color="primary" />
+              <Palette fontSize="large" />
             </IconButton>
 
             <IconButton
               sx={{ p: 2, mb: 2 }}
               onClick={actions?.toggleSettingsBar}
             >
-              <Settings fontSize="large" color="primary" />
+              <Settings fontSize="large" />
             </IconButton>
 
             <Chip
               label={"v18.9.2"}
               disabled
-              color="primary"
               size="medium"
               sx={{ cursor: "pointer" }}
             />

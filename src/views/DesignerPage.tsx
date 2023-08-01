@@ -15,7 +15,7 @@ export const DesignerPage = () => {
           height={48}
           px={4}
         >
-          <PageTitle />
+          {/* <PageTitle /> */}
         </Box>
 
         <Box
